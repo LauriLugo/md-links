@@ -1,48 +1,67 @@
+const fs = require("fs");
+const axios = require("axios");
+
 function calculate(arreglo, resolve, reject, options) {
   //para cada elemento del arreglo (archivo) obtener los links y guardarlos en un arreglo de objetos
   let links = [];
-  arreglo.forEach((file) => {
-    const data = fs.readFileSync(file, "utf-8");
-    const renderer = new marked.Renderer();
-    renderer.link = function (href, title, text) {
-      links.push({
-        href: href,
-        text: text,
-        file: file,
-      });
-    };
+  for (const file of arreglo) {
+    //Leer el archivo
+    let data = fs.readFileSync(file, "utf8");
+    //Obtener los links con regex y guardarlos en un arreglo
+    let linksArray = data.match(/\[(.*)\]\((http[s]?:\/\/[^\)]*)\)/g);
+    //Si hay links, guardarlos en el arreglo de objetos
+    if (linksArray !== null) {
+      for (const link of linksArray) {
+        let linkParts = link.match(/\[(.*)\]\((http[s]?:\/\/[^\)]*)\)/);
+        links.push({
+          href: linkParts[2],
+          text: linkParts[1],
+          file: file,
+        });
+      };
+    }
   }
-  );
-  //Si no hay links rechazar la promesa /¿Está vacío el arreglo de objetos?
+  //Si no hay links se rechaza la promesa/¿Está vacío el arreglo de objetos?
   if (links.length === 0) {
     reject("No hay links");
   }
   //¿La opción validate es true?
   if (options.validate) {
     //Para cada link obtener el link y guardar el estatus
-    links.forEach((link) => {
-      link.status = fetch(link.href)
-        .then((res) => {
-          link.status = res.status;
-          return res.status;
-        })
-        .catch((err) => {
-          link.status = err.code;
-          return err.code;
-        });
-    });
-    //¿La opción Stats está presente?
-    if (options.stats) {
-      //Calcular total, unique y broken
-      let total = links.length;
-      let unique = [...new Set(links.map((link) => link.href))].length;
-      let broken = links.filter((link) => link.status !== 200).length;
-      //Devolver el total, unique y broken al usuario
-      resolve({ total, unique, broken });
-    } else {
-      //Devolver el arreglo de objetos al usuario 
-      resolve(links);
+    const promises = [];
+    for (const link of links) {
+      promises.push(
+        axios.get(link.href)
+          .then((resultado) => {
+            link.status = resultado.status;
+            link.ok = 'ok';
+            return resultado.status;
+          })
+          .catch((error) => {
+            link.status = error.code;
+            link.ok = 'fail';
+            return error.code;
+          })
+      );
     }
+    Promise.allSettled(promises)
+      .then(() => {
+        //¿La opción Stats está presente?
+        if (options.stats) {
+          //Calcular total, unique y broken
+          let total = links.length;
+          let unique = [...new Set(links.map((link) => link.href))].length;
+          let broken = links.filter((link) => link.status !== 200).length;
+          //Devolver el total, unique y broken al usuario
+          return resolve({ total, unique, broken });
+        } else {
+          //Devolver el arreglo de objetos al usuario (links)
+          return resolve(links);
+        }
+      })
+      .catch((err) => {
+        reject(err);
+      });
   } else {
     //¿la opción Stats está presente?
     if (options.stats) {
@@ -57,3 +76,5 @@ function calculate(arreglo, resolve, reject, options) {
     }
   }
 }
+
+module.exports = calculate;
