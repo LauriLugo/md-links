@@ -14,19 +14,14 @@
     * [2.3.2. Sin opciones ](#232-Opción-a)
     * [2.3.2. Opción no valida ](#232-Opción-a)
   * [2.4. Pruebas Unitarias ](#232-Opción-a)
-  * 
-* [3. Consideraciones generales](#4-consideraciones-generales)
-* [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Entregables](#6-entregables)
-* [7. Hacker edition](#7-hacker-edition)
-* [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
-* [9. Checklist](#9-checklist)
-* [10. Achicando el problema](#10-achicando-el-problema)
-
+* [3. Requisitos](#3-requisitos)
+* [4. Planificación](#4-planificación)
+  * [4.1. Github Projects ](#41-github-projects)
+  * [4.2. Diagrama de flujo](#42-diagrama-de-flujo)
+* [5. Consideraciones generales](#5-consideraciones-generales)
+* [6. Conclusiones](#6-conclusiones)
   
-
 ***
- 
 ## 1. Preámbulo
 
 [Markdown](https://es.wikipedia.org/wiki/Markdown) es un lenguaje de marcado que permite dar formato a textos de una manera sencilla y rápida, usando una serie de caracteres especiales _(almohadillas (#), asteriscos (*), guiones (-), corchetes ([ ]), paréntesis (()), etc.)_ para indicar los elementos que se quieren formatear, como encabezados, énfasis, listas, enlaces, imágenes, etc.
@@ -39,10 +34,7 @@ Fue creado en el año 2004 con el objetivo de facilitar la escritura de textos p
 
 Los archivos `Markdown` normalmente contienen _links_ (vínculos/ligas) que muchas veces están rotos o ya no son válidos y eso perjudica mucho el valor de la información que se quiere compartir.
 
-Para este proyecto se ha propuesto crear una herramienta usando [Node.js](https://nodejs.org/), que lea y analice archivos en formato `Markdown`, para verificar los links que contengan y reportar algunas estadísticas.
-
-En este proyecto crearás una herramienta de línea de comando (CLI) así como tu
-propia librería (o biblioteca - library) en JavaScript.
+Para este proyecto se ha propuesto crear una herramienta de línea de comando (CLI) usando [Node.js](https://nodejs.org/), que lea y analice archivos en formato `Markdown`, para verificar los links que contengan y reportar algunas estadísticas. Así mismo, se desarrolla una librería en JavaScript.
 
 ## 2.1. Instrucciones de uso
 
@@ -55,11 +47,15 @@ propia librería (o biblioteca - library) en JavaScript.
 /// 2.3.4. Opción --help
 /// 2.3.5. Sin opciones
 /// 2.3.6. Opción no valida
-## 2.3.4. Pruebas Unitarias
+## 2.4. Pruebas Unitarias
 
+## 3. Requisitos
 
+## 4. Planificación
+## 4.1. Github Projects
+## 4.2. Diagrama de flujo
 
-## 3. Consideraciones generales
+## 5. Consideraciones generales
 
 * La **librería** y el **script ejecutable** (herramienta de línea de comando - CLI) están implementados en JavaScript para ser ejecutados con
   Node.js. **--------------------Está permitido usar librerías externas-----------------------**.
@@ -77,6 +73,9 @@ propia librería (o biblioteca - library) en JavaScript.
 
 * Para disminuir la complejidad de tu algoritmo recursivo, te recomendamos 
   utilizar la versión síncrona de la función para leer directorios, `readdirSync`.-----------------------------------
+
+## 6. Conclusiones
+
 
 ## 5. Criterios de aceptación mínimos del proyecto
 
