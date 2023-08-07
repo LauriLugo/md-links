@@ -30,4 +30,10 @@ describe("mdLinks", () => {
       expect(result.length > 1).toBe(true);
     });
   });
+
+  it("CARPETA (stats): Debe ser un objeto de respuesta", () => {
+    return mdLinks("./",{stats:true}).then((result) => {
+      expect(Array.isArray(result)).toBe(false);
+    });
+  });
 });
