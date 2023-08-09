@@ -39,6 +39,7 @@ const mdLinks = (path, options) => {
       } else {
         // filtrar todos los archivos .md
         let files = [];
+        //Función recursiva para leer carpetas - NO SE EJECUTA HASTA QUE SE LLAME
         const leerCarpeta = (ruta) => {
           //Lee la carpeta
           const archivosYCarpetas = readdirSync(ruta);
@@ -64,7 +65,7 @@ const mdLinks = (path, options) => {
         if (files.length === 0) {
           reject("No hay archivos .md");
         }
-        //Si existen archivos .md se agregan al arreglo de archivos(línea 49)
+        //Si existen archivos .md se agregan al arreglo de archivos(línea 50)
         calculate(files, resolve, reject, options);
       }
     } else {
