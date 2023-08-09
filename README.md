@@ -5,22 +5,14 @@
 * [1. Preámbulo](#1-preámbulo)
 * [2. Resumen del proyecto y Definición del producto](#2-resumen-del-proyecto-y-definición-del-producto)
   * [2.1. Instrucciones de uso](#21-instrucciones-de-uso)
-  * [2.2. Instalación](#22-instalación)
-  * [2.3. Interfaz de Línea de Comando (CLI)/// Opciones](#23-interfaz-de-línea-de-comando-(cli)///-opciones)
-    * [2.3.1. Opción --validate](#231-opción---validate)
-    * [2.3.2. Opción --stats](#232-opción---stats)
-    * [2.3.3. Combinación de opciones](#233-combinación-de-opciones) --validate --stats o --stats --validate 
-    * [2.3.2. Opción --help ](#232-opción---help)
-    * [2.3.2. Sin opciones ](#232-Opción-a)
-    * [2.3.2. Opción no valida ](#232-Opción-a)
-  * [2.4. Pruebas Unitarias ](#232-Opción-a)
 * [3. Requisitos](#3-requisitos)
-* [4. Planificación](#4-planificación)
-  * [4.1. Github Projects ](#41-github-projects)
-  * [4.2. Diagrama de flujo](#42-diagrama-de-flujo)
-* [5. Consideraciones generales](#5-consideraciones-generales)
-* [6. Conclusiones](#6-conclusiones)
-  
+* [4. Consideraciones generales](#4-consideraciones-generales)
+* [5 Pruebas Unitarias ](#5-pruebas-unitarias)
+* [6. Planificación](#6-planificación)
+  * [6.1. Github Projects ](#61-github-projects)
+  * [6.2. Diagrama de flujo](#62-diagrama-de-flujo)
+[7. Conclusiones](#7-conclusiones)
+
 ***
 ## 1. Preámbulo
 
@@ -28,108 +20,39 @@
 
 Fue creado en el año 2004 con el objetivo de facilitar la escritura de textos para la web sin tener que usar HTML. Markdown se puede convertir fácilmente a diferentes formatos y se puede usar en muchos sistemas de gestión de contenidos, blogs, foros y aplicaciones web. 
 
-![md-links](https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg)
-
 ## 2. Resumen del proyecto y Definición del producto
 
 Los archivos `Markdown` normalmente contienen _links_ (vínculos/ligas) que muchas veces están rotos o ya no son válidos y eso perjudica mucho el valor de la información que se quiere compartir.
 
 Para este proyecto se ha propuesto crear una herramienta de línea de comando (CLI) usando [Node.js](https://nodejs.org/), que lea y analice archivos en formato `Markdown`, para verificar los links que contengan y reportar algunas estadísticas. Así mismo, se desarrolla una librería en JavaScript.
 
-## 2.1. Instrucciones de uso
-
-## 2.2. Instalación
-
-## 2.3. Interfaz de Linea de Comando (CLI) /// Opciones
-## 2.3.1. Validate /// Opción --validate 
-## 2.3.2. stats /// Opción --stats
-## 2.3.3. --validate --stats o --stats --validate /// Combinación de opciones
-/// 2.3.4. Opción --help
-/// 2.3.5. Sin opciones
-/// 2.3.6. Opción no valida
-## 2.4. Pruebas Unitarias
-
-## 3. Requisitos
-
-## 4. Planificación
-## 4.1. Github Projects
-## 4.2. Diagrama de flujo
-
-## 5. Consideraciones generales
-
-* La **librería** y el **script ejecutable** (herramienta de línea de comando - CLI) están implementados en JavaScript para ser ejecutados con
-  Node.js. **--------------------Está permitido usar librerías externas-----------------------**.
-
-* El módulo **es instalable** vía `npm install <laurilugo>/md-links`. Este módulo incluye tanto un _ejecutable_ que se pueda invocar en la línea de
-  comando como una interfaz que se pueda importar con `require` para usarlo programáticamente.
-
-* Los **tests unitarios** deben cubrir un mínimo del 70% de _statements_, _functions_, _lines_ y _branches_. 
-
-* Para este proyecto no está permitido utilizar `async/await`. Tampoco se utiliza la versión síncrona de la función para leer archivos, `readFileSync`, sino que se resuelve de manera asíncrona.
-
-* Para este proyecto es **opcional** el uso de ES Modules `(import/export)`, en el
-  caso optes utilizarlo deberás de crear un script de `build` en el `package.json`
-  que los transforme en `requires` y `module.exports` con ayuda de **babel**.--------------------------------------
-
-* Para disminuir la complejidad de tu algoritmo recursivo, te recomendamos 
-  utilizar la versión síncrona de la función para leer directorios, `readdirSync`.-----------------------------------
-
-## 6. Conclusiones
-
-
-## 5. Criterios de aceptación mínimos del proyecto
-
-Para comenzar este proyecto tendrás que hacer un **_fork_** y **_clonar_** este
-repositorio.
-
-Antes de comenzar a codear, es necesario crear un **plan de acción**. Esto debería
-quedar detallado en el `README.md` de tu repo y en una serie de **_issues_**
-y **_milestones_** para priorizar y organizar el trabajo, y para poder hacer
-seguimiento de tu progreso.
-
-Dentro de cada **_milestone_** se crearán y asignarán los **_issues_** que cada quien
-considere necesarios.
-
-### Archivos del proyecto
-
-* `README.md` con descripción del módulo, instrucciones de instalación/uso,
-  documentación del API y ejemplos. Todo lo relevante para que cualquier
-  developer que quiera usar tu librería pueda hacerlo sin inconvenientes.
-* `index.js`: Desde este archivo debes exportar **una** función (`mdLinks`).
-* `package.json` con nombre, versión, descripción, autores, licencia,
-  dependencias, scripts (pretest, test, ...), main, bin
-* `.editorconfig` con configuración para editores de texto. Este archivo no se
-  debe cambiar.
-* `.eslintrc` con configuración para linter. Este archivo contiene una
-  configuración básica para ESLint, si deseas agregar reglas adicionales
-  como Airbnb deberás modificar este archivo.
-* `.gitignore` para ignorar `node_modules` u otras carpetas que no deban
-  incluirse en control de versiones (`git`).
-* `test/md-links.spec.js` debe contener los tests unitarios para la función
-  `mdLinks()`. Tu implementación debe pasar estos tests.
-
-## Este proyecto consta de DOS partes
+## 2.1. ## Esta librería consta de DOS partes:
 
 ### 1) JavaScript API
 
-El módulo debe poder **importarse** en otros scripts de Node.js y debe ofrecer la
-siguiente interfaz:
+## ● Instalación
+
+Abre una terminal o línea de comandos en tu sistema operativo y ejecuta el siguiente comando:
+```
+npm install @laurilugo/md-links
+```
+
+## ● Uso
+
+La librería puyede importarse en otros scripts de Node.js y ofrece la siguiente interfaz:
 
 #### `mdLinks(path, options)`
 
 ##### Argumentos
 
 * `path`: Ruta **absoluta** o **relativa** al **archivo** o **directorio**.
-Si la ruta pasada es relativa, debe resolverse como relativa al directorio
-desde donde se invoca node - _current working directory_).
-* `options`: Un objeto con **únicamente** la siguiente propiedad:
-  - `validate`: Booleano que determina si se desea validar los links
-    encontrados.
-
+* `options`: Un objeto con las siguientes propiedades:
+  - `validate`: Booleano que determina si se desea validar los links encontrados.
+  - `stats`: Booleano que determina si se desean obtener estadísticas de los enlaces.
+    
 ##### Valor de retorno
 
-La función debe **retornar una promesa** (`Promise`) que **resuelva a un arreglo**
-(`Array`) de objetos (`Object`), donde cada objeto representa un link y contiene
+La función retorna una promesa (`Promise`) que resuelve un arreglo (`Array`) de objetos (`Object`), donde cada objeto representa un link y contiene
 las siguientes propiedades
 
 Con `validate:false` :
@@ -172,8 +95,16 @@ mdLinks("./some/dir")
 
 ### 2) CLI (Command Line Interface - Interfaz de Línea de Comando)
 
-El ejecutable de nuestra aplicación debe poder ejecutarse de la siguiente
-manera a través de la **terminal**:
+## ● Instalación
+
+Abre una terminal o línea de comandos en tu sistema operativo y ejecuta el siguiente comando:
+```
+npm install @laurilugo/md-links -g
+```
+
+## ● Uso
+
+El ejecutable puede ejecutarse de la siguiente manera a través de la **terminal**:
 
 `md-links <path-to-file> [options]`
 
@@ -186,19 +117,14 @@ $ md-links ./some/example.md
 ./some/example.md http://google.com/ Google
 ```
 
-El comportamiento por defecto no debe validar si las URLs responden ok o no,
-solo debe identificar el archivo markdown (a partir de la ruta que recibe como
-argumento), analizar el archivo Markdown e imprimir los links que vaya
-encontrando, junto con la ruta del archivo donde aparece y el texto
-que hay dentro del link (truncado a 50 caracteres).
+El comportamiento por defecto no valida si las URLs responden ok o no, solo identifica el archivo markdown (a partir de la ruta que recibe como
+argumento), analiza el archivo Markdown e imprime los links que vaya encontrando, junto con la ruta del archivo donde aparece y el texto que hay dentro del link.
 
 #### Options
 
 ##### `--validate`
 
-Si pasamos la opción `--validate`, el módulo debe hacer una petición HTTP para
-averiguar si el link funciona o no. Si el link resulta en una redirección a una
-URL que responde ok, entonces consideraremos el link como ok.
+Si se incluye la opción `--validate`, el módulo hace una petición HTTP para averiguar si el link funciona o no. Si el link resulta en una redirección a una URL que responde ok, entonces se considera el link como ok.
 
 Por ejemplo:
 
@@ -209,14 +135,12 @@ $ md-links ./some/example.md --validate
 ./some/example.md http://google.com/ ok 301 Google
 ```
 
-Vemos que el _output_ en este caso incluye la palabra `ok` o `fail` después de
-la URL, así como el status de la respuesta recibida a la petición HTTP a dicha
+En este caso el _output_ incluye la palabra `ok` o `fail` después de la URL, así como el status de la respuesta recibida a la petición HTTP a dicha
 URL.
 
 ##### `--stats`
 
-Si pasamos la opción `--stats` el output (salida) será un texto con estadísticas
-básicas sobre los links.
+Si se incluye la opción `--stats` el output (salida) será un texto con estadísticas básicas sobre los links.
 
 ```sh
 $ md-links ./some/example.md --stats
@@ -224,8 +148,7 @@ Total: 3
 Unique: 3
 ```
 
-También podemos combinar `--stats` y `--validate` para obtener estadísticas que
-necesiten de los resultados de la validación.
+También es posible combinar `--stats` y `--validate` para obtener estadísticas que necesiten de los resultados de la validación.
 
 ```sh
 $ md-links ./some/example.md --stats --validate
@@ -233,6 +156,82 @@ Total: 3
 Unique: 3
 Broken: 1
 ```
+
+
+
+
+
+
+
+## 3. Requisitos
+
+Asegúrate de tener Node.js instalado en tu computadora. Puedes descargar la última versión estable desde el sitio oficial: Node
+
+## 4. Consideraciones generales
+
+***********Crea un nuevo directorio en tu proyecto si aún no tienes uno, o asegúrate de estar ubicado en la carpeta raíz de tu proyecto.
+Node.js es un entorno de ejecución para JavaScript construido con el motor de JavaScript V8 de Chrome. Esto nos va a permitir ejecutar JavaScript en el entorno del sistema operativo, ya sea tu máquina o un servidor, lo cual nos abre las puertas para poder interactuar con el sistema en sí, archivos, redes, etc.
+Diseñar tu propia librería es una experiencia fundamental para cualquier desarrolladora porque que te obliga a pensar en la interfaz (API) de tus módulos y cómo será usado por otras developers. Debes tener especial consideración en peculiaridades del lenguaje, convenciones y buenas prácticas.
+
+* La **librería** y el **script ejecutable** (herramienta de línea de comando - CLI) están implementados en JavaScript para ser ejecutados con
+  Node.js. **--------------------Está permitido usar librerías externas-----------------------**.
+
+* El módulo **es instalable** vía `npm install <laurilugo>/md-links`. Este módulo incluye tanto un _ejecutable_ que se pueda invocar en la línea de
+  comando como una interfaz que se pueda importar con `require` para usarlo programáticamente.
+
+
+
+* Para este proyecto no está permitido utilizar `async/await`. Tampoco se utiliza la versión síncrona de la función para leer archivos, `readFileSync`, sino que se resuelve de manera asíncrona.
+
+* Para este proyecto es **opcional** el uso de ES Modules `(import/export)`, en el
+  caso optes utilizarlo deberás de crear un script de `build` en el `package.json`
+  que los transforme en `requires` y `module.exports` con ayuda de **babel**.--------------------------------------
+
+* Para disminuir la complejidad de tu algoritmo recursivo, te recomendamos 
+  utilizar la versión síncrona de la función para leer directorios, `readdirSync`.-----------------------------------
+
+## 5. Pruebas Unitarias
+
+* Los **tests unitarios** cubren más del 70% de _statements_, _functions_, _lines_ y _branches_.
+  
+## 4. Planificación
+## 4.1. Github Projects
+## 4.2. Diagrama de flujo
+## 6. Conclusiones
+
+
+## 5. Criterios de aceptación mínimos del proyecto
+
+Para comenzar este proyecto tendrás que hacer un **_fork_** y **_clonar_** este
+repositorio.
+
+Antes de comenzar a codear, es necesario crear un **plan de acción**. Esto debería
+quedar detallado en el `README.md` de tu repo y en una serie de **_issues_**
+y **_milestones_** para priorizar y organizar el trabajo, y para poder hacer
+seguimiento de tu progreso.
+
+Dentro de cada **_milestone_** se crearán y asignarán los **_issues_** que cada quien
+considere necesarios.
+
+### Archivos del proyecto
+
+* `README.md` con descripción del módulo, instrucciones de instalación/uso,
+  documentación del API y ejemplos. Todo lo relevante para que cualquier
+  developer que quiera usar tu librería pueda hacerlo sin inconvenientes.
+* `index.js`: Desde este archivo debes exportar **una** función (`mdLinks`).
+* `package.json` con nombre, versión, descripción, autores, licencia,
+  dependencias, scripts (pretest, test, ...), main, bin
+* `.editorconfig` con configuración para editores de texto. Este archivo no se
+  debe cambiar.
+* `.eslintrc` con configuración para linter. Este archivo contiene una
+  configuración básica para ESLint, si deseas agregar reglas adicionales
+  como Airbnb deberás modificar este archivo.
+* `.gitignore` para ignorar `node_modules` u otras carpetas que no deban
+  incluirse en control de versiones (`git`).
+* `test/md-links.spec.js` debe contener los tests unitarios para la función
+  `mdLinks()`. Tu implementación debe pasar estos tests.
+
+
 
 ## 6. Entregables
 
