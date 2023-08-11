@@ -177,9 +177,10 @@ Se implementaron _issues_ y _milestones_ para priorizar, organizar y hacer segui
 Se elaboró un `diagrama de flujo`para visualizar y planificar las tareas y objetivos.
 
 <p align="center">
-  <img src="https://github.com/LauriLugo/md-links/assets/129604876/0b400260-cb95-426e-ab77-f716e643f238"
+  <img src="https://github.com/LauriLugo/md-links/assets/129604876/907970b6-3f65-4d72-9377-4ab03d6e1933"
 ">
 </p>
+
 
 Realizado por :
 ```
